@@ -10,3 +10,14 @@
         <CODE> CODE </CODE>
     </BODY>
 </HTML>
+
+import pandas as pd
+import plotly.express as px
+import numpy as np
+
+dat = pd.read_csv("assetts/kirby21.csv").drop(['Unnamed: 0'], axis = 1)
+dat.head()
+
+dat = dat.assign(id_char = dat.id.astype(str))
+fig = px.bar(dat, x = "id_char", y = "volume", color = "roi")
+fig.show()
